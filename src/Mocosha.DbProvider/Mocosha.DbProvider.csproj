@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>Mocosha.DbProvider</AssemblyName>
+    <AssemblyTitle>Mocosha.DbProvider</AssemblyTitle>
+    <Description>Simple database access library on top of ADO.NET </Description>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <DebugType>portable</DebugType>
+    <Company>mocosha Inc.</Company>
+    <Version>1.0.0</Version>
+    <Authors>mocosha Inc.</Authors>
+    <Copyright>mocosha Inc.</Copyright>
+    <PackageProjectUrl>https://github.com/mocosha/db-provider</PackageProjectUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/mocosha/db-provider/master/LICENSE</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/mocosha/db-provider.git</RepositoryUrl>
+    <PackageOutputPath>./nupkg</PackageOutputPath>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+  </PropertyGroup>
+</Project>
