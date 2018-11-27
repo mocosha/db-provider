@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -26,23 +25,23 @@ namespace Mocosha.DbProvider
     /// </code>
     /// </example>
     /// <example>
-    /// Select from table
+    /// Read from table
     /// <code>
-    /// class RideDetails
+    /// class Person
     /// {
-    ///     public string ConfirmationNo { get; set; }
-    ///     public DateTime PickupDateTime { get; set; }
+    ///     public string Name { get; set; }
+    ///     public DateTime BirthDate { get; set; }
     /// }
-    /// 
+    ///
     /// using (var dbProvider = new DbProvider("Connection string name"))
     /// {
     ///     var listOfRides = dbProvider
-    ///         .SetCommandFromText("SELECT confirmation_no ConfirmationNo, req_date_time PickupDateTime FROM rides WHERE affiliate=@affiliateId")
+    ///         .SetCommandFromText("SELECT first_name + ' ' + last_name Name, birth_date BirthDate FROM people WHERE id=@id")
     ///         .WithParameters(new
     ///         {
-    ///             @affiliateId = DbParam.Create(SqlDbType.Int, 123)
+    ///             @id = DbParam.Create(SqlDbType.Int, 123)
     ///         })
-    ///         .ExecuteQuery&gt;RideDetails&lt;()
+    ///         .ExecuteQuery&gt;Person&lt;()
     ///         .ToList();
     /// }
     /// </code>
@@ -52,10 +51,11 @@ namespace Mocosha.DbProvider
         /// <summary>
         /// Database access provider
         /// </summary>
-        /// <param name="connectionStringName">Connection string name from application config</param>
-        public DbProvider(string connectionStringName)
+        /// <param name="connectionString">Database connection string</param>
+        public DbProvider(string connectionString)
         {
-            var connectionString = ConfigurationManager.ConnectionStrings[connectionStringName].ConnectionString;
+            if (string.IsNullOrWhiteSpace(connectionString))
+                throw new ArgumentException("ConnectionString can't be null or empty", nameof(connectionString));
             _connection = new SqlConnection(connectionString);
         }
 

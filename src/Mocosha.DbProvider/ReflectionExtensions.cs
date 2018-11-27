@@ -72,7 +72,7 @@ namespace Mocosha.DbProvider
 
             if (pi == null || !pi.CanWrite)
                 return;
-            
+
             if (propertyValue is DBNull)
                 propertyValue = null;
 
